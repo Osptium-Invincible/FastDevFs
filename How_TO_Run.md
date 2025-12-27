@@ -1,5 +1,5 @@
 # Running Guide (for developers)
-*We will keep updating this file with more detailed instructions.*
+*We will keep updating this file with the latest detailed instructions as the project grows.*
 ## Install the FastDevFS
 To install FastDevFS, follow these steps:
 1. Clone the repository:
@@ -11,10 +11,16 @@ To install FastDevFS, follow these steps:
     ``` bash
     sudo apt-get install libfuse3-dev g++
     ```
-3. Run the following command in sudo mode
-    ``` bash
-    sudo su
-    g++ main.cpp -Wall `pkg-config fuse3 --cflags --libs` -o fastdevfs
-    mkdir test_mount_dir
-    ./fastdevfs test_mount_dir -f
+3. Build the project using CMake:
+    ```bash
+    mkdir -p build
+    cd build
+    cmake ..
+    make
+    ```
+
+4. Run the filesystem (requires root privileges):
+    ```bash
+    mkdir -p ../test_mount_dir
+    ./FastDevFS ../test_mount_dir -f ## Run in foreground mode
     ```
